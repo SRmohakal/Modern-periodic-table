@@ -1,15 +1,15 @@
 #include <bits/stdc++.h><br>
-#include <iomanip>
-#include <string>
-#include <algorithm>
-using namespace std;
+#include <iomanip><br>
+#include <string><br>
+#include <algorithm><br>
+using namespace std;<br>
 
-struct Element {
-    int AtomicNo;
-    string name, symbol;
-    float mass;
-    string type;
-};
+struct Element {<br>
+    int AtomicNo;<br>
+    string name, symbol;<br>
+    float mass;<br>
+    string type;<br>
+};<br>
 
 void display(Element arr[], int size) {
     cout << "               MODERN PERIODIC TABLE" << endl;
