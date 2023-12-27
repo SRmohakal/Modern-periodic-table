@@ -18,13 +18,13 @@ symbol. Use case-insensitive comparison to enhance search accuracy.*<br>
 configuration, discovery date, and common uses.*<br>
 <b>Filtering and Sorting</b><br>
 *Allow users to filter elements based on their types (metals, non-metals, metalloids, etc.). Implement
-sorting options for organizing elements alphabetically, by atomic number, or by atomic mass.&<br>
+sorting options for organizing elements alphabetically, by atomic number, or by atomic mass.*<br>
 <b>Dynamic Updates</b><br>
 *Enable periodic updates to ensure the inclusion of new elements or any changes in known element
-properties.&<br>
+properties.*<br>
 <b>Multi-Platform Support</b><br>
 *Develop the application to be accessible across multiple platforms, including desktop and mobile
-devices.&<br>
+devices.*<br>
 <b>Customization Options</b><br>
 *Provide users with the ability to customize the display settings, such as theme colours, font size, and
 arrangement of elements.*<br>
