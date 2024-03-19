@@ -1,89 +1,243 @@
-#include <bits/stdc++.h>
+#include <iostream>
 #include <iomanip>
 #include <string>
 #include <algorithm>
+#include <fstream>
 using namespace std;
+
 struct Element {
- int AtomicNo;
- string name, symbol;
- float mass;
- string type;
+    int AtomicNo;
+    string name, symbol;
+    float mass;
+    string type;
 };
-void display(Element arr[], int Size)
-{
- cout << "\n\t\t\tTHE MODERN PERIODIC TABLE\n";
+
+void display(Element arr[], int Size,ofstream& outFile) {
+    cout << "\n\t\t\tTHE MODERN PERIODIC TABLE\n";
     cout << "\t\t\t-------------------------\n";
-    cout << "\t  1                                                      18" << "\n\n";
-    cout << "\t1 H  2                                  13 14  15 16  17 He" << "\n\n";
-    cout << "\t2 Li Be                                 B  C   N  O   F  Ne" << "\n\n";
-    cout << "\t3 Na Mg 3  4  5  6  7  8  9  10 11  12  Al Si  P  S   Cl Ar" << "\n\n";
-    cout << "\t4 K  Ca Sc Ti V  Cr Mn Fe Co Ni Cu  Zn  Ga Ge  As Se  Br Kr" << "\n\n";
-    cout << "\t5 Rb Sr Y  Zr Nb Mo Tc Ru Rh Pd Ag  Cd  In Sn  Sb Te  I  Xe" << "\n\n";
-    cout << "\t6 Cs Ba La Hf Ta W  Re Os Ir Pt Au  Hg  Tl Pb  Bi Po  At Rn" << "\n\n";
-    cout << "\t7 Fr Ra Ac Rf Db Sg Bh Hs Mt Ds Rg  Cn  Nh Fl  Mc Lv  Ts Og" << "\n\n\n";
-    cout << "\t\t Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu" << "\n\n";
-    cout << "\t\t Th Pa U  Np Pu Am Cm Bk Cf Es Fm Md No Lr" << "\n\n\n";
+    cout << "  1                                                                                    18  \n";
+    cout << "+----+                                                                               +----+\n";
+    cout << "| H  | 2                                                      13   14   15   16   17 | He |\n";
+    cout << "+----+----+                                                 +----+----+----+----+----+----+\n";
+    cout << "| Li | Be |                                                 | B  | C  | N  | O  | F  | Ne |\n";
+    cout << "+----+----+                                                 +----+----+----+----+----+----+\n";
+    cout << "| Na | Mg | 3    4    5    6    7    8    9    10   11   12 | Al | Si | P  | S  | Cl | Ar |\n";
+    cout << "+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+\n";
+    cout << "| K  | Ca | Sc | Ti | V  | Cr | Mn | Fe | Co | Ni | Cu | Zn | Ga | Ge | As | Se | Br | Kr |\n";
+    cout << "+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+\n";
+    cout << "| Rb | Sr | Y  | Zr | Nb | Mo | Tc | Ru | Rh | Pd | Ag | Cd | In | Sn | Sb | Te | I  | Xe |\n";
+    cout << "+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+\n";
+    cout << "+ Cs | Ba | La | Hf | Ta | W  | Re | Os | Ir | Pt | Au | Hg | Tl | Pb | Bi | Po | At | Rn |\n";
+    cout << "+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+\n";
+    cout << "| Fr | Ra | Ac | Rf | Db | Sg | Bh | Hs | Mt | Ds | Rg | Cn | Nh | Fl | Mc | Lv | Ts | Og |\n";
+    cout << "+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+\n";
+    cout << "\t+----+----+----+----+----+----+----+----+----+----+----+----+----+----+\n";
+    cout << "\t| Ce | Pr | Nd | Pm | Sm | Eu | Gd | Tb | Dy | Ho | Er | Tm | Yb | Lu |\n";
+    cout << "\t+----+----+----+----+----+----+----+----+----+----+----+----+----+----+\n";
+    cout << "\t| Th | Pa | U  | Np | Pu | Am | Cm | Bk | Cf | Es | Fm | Md | No | Lr |\n";
+    cout << "\t+----+----+----+----+----+----+----+----+----+----+----+----+----+----+\n";
+
+
+
+      outFile << "\n\t\t\tTHE MODERN PERIODIC TABLE\n";
+    outFile << "\t\t\t-------------------------\n";
+    outFile << "  1                                                                                    18  \n";
+    outFile << "+----+                                                                               +----+\n";
+    outFile << "| H  | 2                                                      13   14   15   16   17 | He |\n";
+    outFile << "+----+----+                                                 +----+----+----+----+----+----+\n";
+    outFile << "| Li | Be |                                                 | B  | C  | N  | O  | F  | Ne |\n";
+    outFile << "+----+----+                                                 +----+----+----+----+----+----+\n";
+    outFile << "| Na | Mg | 3    4    5    6    7    8    9    10   11   12 | Al | Si | P  | S  | Cl | Ar |\n";
+    outFile << "+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+\n";
+    outFile<< "| K  | Ca | Sc | Ti | V  | Cr | Mn | Fe | Co | Ni | Cu | Zn | Ga | Ge | As | Se | Br | Kr |\n";
+    outFile << "+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+\n";
+    outFile << "| Rb | Sr | Y  | Zr | Nb | Mo | Tc | Ru | Rh | Pd | Ag | Cd | In | Sn | Sb | Te | I  | Xe |\n";
+    outFile << "+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+\n";
+    outFile << "+ Cs | Ba | La | Hf | Ta | W  | Re | Os | Ir | Pt | Au | Hg | Tl | Pb | Bi | Po | At | Rn |\n";
+    outFile << "+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+\n";
+    outFile << "| Fr | Ra | Ac | Rf | Db | Sg | Bh | Hs | Mt | Ds | Rg | Cn | Nh | Fl | Mc | Lv | Ts | Og |\n";
+    outFile << "+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+\n";
+    outFile << "\t+----+----+----+----+----+----+----+----+----+----+----+----+----+----+\n";
+    outFile << "\t| Ce | Pr | Nd | Pm | Sm | Eu | Gd | Tb | Dy | Ho | Er | Tm | Yb | Lu |\n";
+    outFile << "\t+----+----+----+----+----+----+----+----+----+----+----+----+----+----+\n";
+    outFile << "\t| Th | Pa | U  | Np | Pu | Am | Cm | Bk | Cf | Es | Fm | Md | No | Lr |\n";
+    outFile << "\t+----+----+----+----+----+----+----+----+----+----+----+----+----+----+\n";
+
 }
+
 int Search(Element arr[], int size, const string& atom) {
- // Convert the query to uppercase for case-insensitive comparison
- string Q = atom;
- transform(Q.begin(), Q.end(), Q.begin(), ::toupper);
- for (int i = 0; i < size; i++) {
- // Convert element names, symbols, and types to uppercase for case-insensitive comparison
- string e_name = arr[i].name;
- string e_symbol = arr[i].symbol;
- string e_type = arr[i].type;
- transform(e_name.begin(), e_name.end(), e_name.begin(), ::toupper);
- transform(e_symbol.begin(), e_symbol.end(), e_symbol.begin(), ::toupper);
- transform(e_type.begin(), e_type.end(), e_type.begin(), ::toupper);
- if (e_name == Q || e_symbol == Q) {
- return i; // index of the found element
- }
- }
- return -1; // if the element is not found
+    string query = atom;
+    transform(query.begin(), query.end(), query.begin(), ::toupper); // Convert input to uppercase
+
+    for (int i = 0; i < size; i++) {
+        string e_name = arr[i].name;
+        transform(e_name.begin(), e_name.end(), e_name.begin(), ::toupper); // Convert element name to uppercase
+
+        if (e_name == query || arr[i].symbol == query) {
+            return i;
+        }
+    }
+    return -1;
 }
-void displayByType(Element arr[], int Size, const string& type) {
- cout << "ELEMENTS OF TYPE: " << type << endl;
- cout << "---------------------------------------------------------------" << endl;
- cout << "| No | Element name | Symbol | Atomic Mass | Type|" << endl;
- cout << "----------------------------------------------------------------" << endl;
- for (int i = 0; i < Size; i++) {
- if (arr[i].type == type) {
- cout << "|" << setw(3) << arr[i].AtomicNo << " |";
- cout << setw(13) << arr[i].name << " |";
- cout << setw(7) << arr[i].symbol << " |";
- cout << setw(12) << arr[i].mass << " |";
- cout << setw(18) << arr[i].type << " |" << endl;
- }
- }
- cout << "----------------------------------------------------------------" << endl;
+
+
+int Search_By_Symbol(Element arr[], int size, const string& symbol) {
+    string query = symbol;
+    transform(query.begin(), query.end(), query.begin(), ::toupper); // Convert input symbol to uppercase
+
+    for (int i = 0; i < size; i++) {
+        string e_symbol = arr[i].symbol;
+        transform(e_symbol.begin(), e_symbol.end(), e_symbol.begin(), ::toupper); // Convert element symbol to uppercase
+
+        if (e_symbol == query) {
+            return i;
+        }
+    }
+    return -1;
 }
-void displayInRange(Element arr[], int Size, int start, int end) {
- cout << "ELEMENTS IN THE RANGE " << start << " TO " << end << endl;
- cout << "---------------------------------------------------------------" << endl;
- cout << "| No | Element name | Symbol | Atomic Mass | Type|" << endl;
- cout << "----------------------------------------------------------------" << endl;
- for (int i = start - 1; i < end && i < Size; i++) {
- cout << "|" << setw(3) << arr[i].AtomicNo << " |";
- cout << setw(13) << arr[i].name << " |";
- cout << setw(7) << arr[i].symbol << " |";
- cout << setw(12) << arr[i].mass << " |";
- cout << setw(18) << arr[i].type << " |" << endl;
- }
- cout << "----------------------------------------------------------------" << endl;
+
+void displayByType(Element arr[], int Size, const string& type,ofstream& outFile) {
+    string typeToDisplay = type;
+    transform(typeToDisplay.begin(), typeToDisplay.end(), typeToDisplay.begin(), ::toupper);
+
+    cout << "ELEMENTS OF TYPE: " << typeToDisplay << endl;
+    cout << "---------------------------------------------------------------" << endl;
+    cout << "| No | Element name | Symbol | Atomic Mass | Type                 |" << endl;
+    cout << "----------------------------------------------------------------" << endl;
+
+     outFile << "ELEMENTS OF TYPE: " << typeToDisplay << endl;
+    outFile << "---------------------------------------------------------------" << endl;
+    outFile << "| No | Element name | Symbol | Atomic Mass | Type                 |" << endl;
+    outFile << "----------------------------------------------------------------" << endl;
+    for (int i = 0; i < Size; i++) {
+        string elementType = arr[i].type;
+        transform(elementType.begin(), elementType.end(), elementType.begin(), ::toupper);
+
+        if (elementType == typeToDisplay) {
+            cout << "|" << setw(3) << arr[i].AtomicNo << " |";
+            cout << setw(15) << arr[i].name << " |";
+            cout << setw(7) << arr[i].symbol << " |";
+            cout << setw(12) << arr[i].mass << " |";
+            cout << setw(22) << arr[i].type << " |" << endl;
+        }
+          if (elementType == typeToDisplay) {
+            outFile << "|" << setw(3) << arr[i].AtomicNo << " |";
+            outFile << setw(15) << arr[i].name << " |";
+            outFile << setw(7) << arr[i].symbol << " |";
+            outFile << setw(12) << arr[i].mass << " |";
+            outFile << setw(22) << arr[i].type << " |" << endl;
+        }
+    }
+
+    cout << "----------------------------------------------------------------" << endl;
+    outFile << "----------------------------------------------------------------" << endl;
 }
-void printAtomNames(Element arr[], int Size) {
- cout << "ATOM NAMES" << endl;
- cout << "------------------" << endl;
- for (int i = 0; i < Size; i++) {
- cout << arr[i].name << endl;
- }
- cout << "------------------" << endl;
+
+void displayInRange(Element arr[], int Size, int start, int end,ofstream& outFile) {
+    cout << "ELEMENTS IN THE RANGE " << start << " TO " << end << endl;
+    cout << "---------------------------------------------------------------" << endl;
+    cout << "| No | Element name | Symbol | Atomic Mass | Type                 |" << endl;
+    cout << "----------------------------------------------------------------" << endl;
+
+     outFile << "ELEMENTS IN THE RANGE " << start << " TO " << end << endl;
+    outFile << "---------------------------------------------------------------" << endl;
+    outFile << "| No | Element name | Symbol | Atomic Mass | Type                 |" << endl;
+    outFile << "----------------------------------------------------------------" << endl;
+
+    for (int i = start - 1; i < end && i < Size; i++) {
+        cout << "|" << setw(3) << arr[i].AtomicNo << " |";
+        cout << setw(15) << arr[i].name << " |";
+        cout << setw(7) << arr[i].symbol << " |";
+        cout << setw(12) << arr[i].mass << " |";
+        cout << setw(22) << arr[i].type << " |" << endl;
+
+
+        for (int i = start - 1; i < end && i < Size; i++) {
+        outFile << "|" << setw(3) << arr[i].AtomicNo << " |";
+        outFile << setw(15) << arr[i].name << " |";
+        outFile << setw(7) << arr[i].symbol << " |";
+        outFile << setw(12) << arr[i].mass << " |";
+        outFile << setw(22) << arr[i].type << " |" << endl;
+    }
+    }
+
+    cout << "----------------------------------------------------------------" << endl;
+       outFile<< "----------------------------------------------------------------" << endl;
 }
+
+void printAtomNames(Element arr[], int Size,ofstream& outFile) {
+    cout << "ATOM NAMES" << endl;
+    cout << "------------------" << endl;
+ outFile<< "ATOM NAMES" << endl;
+    outFile<< "------------------" << endl;
+
+    for (int i = 0; i < Size; i++) {
+       cout<<i+1<<".";
+       outFile<<i+1<<".";
+        cout << arr[i].name << endl;
+        outFile << arr[i].name << endl;
+    }
+
+    cout << "------------------" << endl;
+     outFile << "------------------" << endl;
+}
+int findByAtomicNumber(Element arr[], int size, int atomicNumber) {
+    for (int i = 0; i < size; i++) {
+        if (arr[i].AtomicNo == atomicNumber) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+void searchByMassRange(Element arr[], int Size, float minMass, float maxMass, ofstream& outFile) {
+    cout << "ELEMENTS IN THE MASS RANGE " << minMass << " TO " << maxMass << endl;
+    cout << "---------------------------------------------------------------" << endl;
+    cout << "| No | Element name | Symbol | Atomic Mass | Type                 |" << endl;
+    cout << "----------------------------------------------------------------" << endl;
+
+    outFile << "ELEMENTS IN THE MASS RANGE " << minMass << " TO " << maxMass << endl;
+    outFile << "---------------------------------------------------------------" << endl;
+    outFile << "| No | Element name | Symbol | Atomic Mass | Type                 |" << endl;
+    outFile << "----------------------------------------------------------------" << endl;
+
+    for (int i = 0; i < Size; i++) {
+        if (arr[i].mass >= minMass && arr[i].mass <= maxMass) {
+            cout << "|" << setw(3) << arr[i].AtomicNo << " |";
+            cout << setw(15) << arr[i].name << " |";
+            cout << setw(7) << arr[i].symbol << " |";
+            cout << setw(12) << arr[i].mass << " |";
+            cout << setw(22) << arr[i].type << " |" << endl;
+
+            outFile << "|" << setw(3) << arr[i].AtomicNo << " |";
+            outFile << setw(15) << arr[i].name << " |";
+            outFile << setw(7) << arr[i].symbol << " |";
+            outFile << setw(12) << arr[i].mass << " |";
+            outFile << setw(22) << arr[i].type << " |" << endl;
+        }
+    }
+
+    cout << "----------------------------------------------------------------" << endl;
+    outFile << "----------------------------------------------------------------" << endl;
+}
+
+void saveToFile(const Element& element, ofstream& outFile) {
+    if (outFile.is_open()) {
+        outFile << "Atomic Number: " << element.AtomicNo << endl;
+        outFile << "Name: " << element.name << endl;
+        outFile << "Symbol: " << element.symbol << endl;
+        outFile << "Atomic Mass: " << element.mass << endl;
+        outFile << "Type: " << element.type << endl;
+        outFile << "----------------------------------------\n";
+    } else {
+        outFile << "Error opening the file for writing.\n";
+    }
+}
+
 int main() {
- const int Size = 118; // Update the size to the number of elements you want
- Element table[Size] = {
- {1, "Hydrogen", "H", 1.0079, "Non-metal"},
+    const int Size = 118;
+    Element table[Size] = {
+        {1, "Hydrogen", "H", 1.0079, "Non-metal"},
  {2, "Helium", "He", 4.0026, "Noble Gase"},
  {3, "Lithium", "Li", 6.941, "Alkali Metal"},
  {4, "Beryllium", "Be", 9.0122, "Alkaline Earth"},
@@ -201,61 +355,136 @@ int main() {
  {116, "Livermorium", "Lv", 293, "Basic Metal"},
  {117, "Tennessine", "Ts", 294, "Halogen"},
  {118, "Oganesson", "Og", 294, "Noble Gase"}
- };
- int choice;
- do {
- cout << "\nMENU:\n";
- cout << "1. Display periodic table\n";
- cout << "2. Search for an element\n";
- cout << "3. Display elements by type\n";
- cout << "4. Display elements in a range\n";
- cout << "5. Print all atom names\n";
- cout << "0. Exit\n";
- cout << "Enter your choice: ";
- cin >> choice;
- switch (choice) {
- case 1:
- display(table, Size);
- break;
- case 2: {
- string atom;
- cout << "Enter the name or symbol of the element to search: ";
- cin >> atom;
- int result = Search(table, Size, atom);
- if (result != -1) {
- cout << "Atomic Number: " << result + 1 << ":" << endl;
- cout << "Name: " << table[result].name << endl;
- cout << "Symbol: " << table[result].symbol << endl;
- cout << "Atomic Mass: " << table[result].mass << endl;
- cout << "Type: " << table[result].type << endl;
- } else {
- cout << "Element not found." << endl;
- }
- break;
- }
- case 3: {
- string typeToDisplay;
- cout << "Enter the type of elements to display: ";
- cin >> typeToDisplay;
- displayByType(table, Size, typeToDisplay);
- break;
- }
- case 4: {
- int rangeStart, rangeEnd;
- cout << "Enter the range (start and end) of elements to display: ";
- cin >> rangeStart >> rangeEnd;
- displayInRange(table, Size, rangeStart, rangeEnd);
- break;
- }
- case 5:
- printAtomNames(table, Size);
- break;
- case 0:
- cout << "Exiting program.\n";
- break;
- default:
- cout << "Invalid choice. Try again.\n";
- }
- } while (choice != 0);
- return 0;
+    };
+
+    int choice;
+  ofstream outFile;
+                    outFile.open("periodic_table.txt", ofstream::app);
+    do {
+        cout << "\nMENU:\n";
+        cout << "1. Display periodic table\n";
+        cout << "2. Search for the details information of an element by its atomic name\n";
+        cout << "3. Display elements by type\n";
+        cout << "4. Display elements in a range\n";
+        cout << "5. Print all atom names\n";
+        cout << "6. Find an element by atomic number\n";
+        cout << "7. Find an element by atomic symbol\n";
+        cout << "8. Search Elements by Mass Range\n";
+        cout << "0. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                display(table, Size,outFile);
+                break;
+            case 2: {
+                string atom;
+                cout << "Enter the name or symbol of the element to search: ";
+                 outFile << "Enter the name or symbol of the element to search: ";
+                cin >> atom;
+
+                int result = Search(table, Size, atom);
+                if (result != -1) {
+                    cout << "Atomic Number: " << result + 1 << ":" << endl;
+                    cout << "Name: " << table[result].name << endl;
+                    cout << "Symbol: " << table[result].symbol << endl;
+                    cout << "Atomic Mass: " << table[result].mass << endl;
+                    cout << "Type: " << table[result].type << endl;
+
+
+            }
+                else {
+                    cout << "Element not found." << endl;
+                }
+                 if (result != -1) {
+                    saveToFile(table[result], outFile);
+                }
+                break;
+            }
+            case 3: {
+                cin.ignore(); // Consume the newline character left in the input buffer
+                string typeToDisplay;
+                cout << "Enter the type of elements to display: ";
+                getline(cin, typeToDisplay);
+                displayByType(table, Size, typeToDisplay,outFile);
+                break;
+            }
+            case 4: {
+                int rangeStart, rangeEnd;
+                cout << "Enter the range (start and end) of elements to display: ";
+                cin >> rangeStart >> rangeEnd;
+                displayInRange(table, Size, rangeStart, rangeEnd,outFile);
+                break;
+            }
+            case 5:
+                printAtomNames(table, Size,outFile);
+                break;
+                case 6: {
+    int atomicNumber;
+    cout << "Enter the atomic number of the element to search: ";
+    cin >> atomicNumber;
+
+    int result = findByAtomicNumber(table, Size, atomicNumber);
+    if (result != -1) {
+        cout << "Atomic Number: " << table[result].AtomicNo << endl;
+        cout << "Name: " << table[result].name << endl;
+        cout << "Symbol: " << table[result].symbol << endl;
+        cout << "Atomic Mass: " << table[result].mass << endl;
+        cout << "Type: " << table[result].type << endl;
+    } else {
+        cout << "Element not found." << endl;
+    }
+     if (result != -1) {
+                    saveToFile(table[result], outFile);
+                }
+    break;
+
+}
+
+      case 7: {
+                string symbol;
+                cout << "Enter the symbol of the element to search: ";
+                cin >> symbol;
+
+                int result = Search_By_Symbol(table, Size, symbol);
+                if (result != -1) {
+                    cout << "Atomic Number: " << result + 1 << ":" << endl;
+                    cout << "Name: " << table[result].name << endl;
+                    cout << "Symbol: " << table[result].symbol << endl;
+                    cout << "Atomic Mass: " << table[result].mass << endl;
+                    cout << "Type: " << table[result].type << endl;
+                } else {
+                    cout << "Element not found." << endl;
+                }
+                 if (result != -1) {
+                    saveToFile(table[result], outFile);
+                }
+                break;
+            }
+            case 8: {
+                float minMass, maxMass;
+                cout << "Enter the minimum and maximum atomic mass range: ";
+                cin >> minMass >> maxMass;
+
+                searchByMassRange(table, Size, minMass, maxMass, outFile);
+                break;
+            }
+            case 0:
+                {
+
+                cout << "Exiting program.\n";
+                 outFile<< "Exiting program.\n";
+                }
+                break;
+            default:
+                {
+                    cout << "Invalid choice. Try again.\n";
+                    outFile<< "Invalid choice. Try again.\n";
+                }
+
+        }
+    } while (choice != 0);
+
+    return 0;
 }
